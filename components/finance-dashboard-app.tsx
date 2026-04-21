@@ -23,6 +23,8 @@ const navItems = [
   { key: 'settings', label: '운영 설정', icon: Settings2 }
 ] as const;
 
+type NavKey = (typeof navItems)[number]['key'];
+
 const toneMap: Record<string, string> = {
   idle: 'bg-slate-100 text-slate-700 border-slate-200',
   parsing: 'bg-blue-50 text-blue-700 border-blue-200',
@@ -60,7 +62,7 @@ function StepBar({ uploadReady }: { uploadReady: boolean }) {
   );
 }
 
-function Sidebar({ active, setActive }: { active: string; setActive: (value: string) => void }) {
+function Sidebar({ active, setActive }: { active: NavKey; setActive: React.Dispatch<React.SetStateAction<NavKey>> }) {
   return (
     <aside className="hidden border-r border-slate-200 bg-white lg:flex lg:flex-col">
       <div className="border-b border-slate-200 px-6 py-6">
@@ -393,7 +395,7 @@ function SettingsView() {
 }
 
 export function FinanceDashboardApp() {
-  const [active, setActive] = React.useState<typeof navItems[number]['key']>('dashboard');
+  const [active, setActive] = React.useState<NavKey>('dashboard');
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
