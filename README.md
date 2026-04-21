@@ -1,30 +1,40 @@
-# AX-TF
+# AX-TF Finance Report Automation
 
-재무보고서 자동화 시스템 Next.js 프로젝트입니다.
+배포 전 단계까지 정리된 Next.js 프로젝트입니다.
 
 ## 기술 스택
-- Next.js 14
+- Next.js 14 (App Router)
 - TypeScript
 - Tailwind CSS
 - Zustand
 - xlsx
 
-## 주요 기능
-- 대시보드 / 데이터 업로드 / 검증 및 매핑 / 운영 설정
-- 보고서 생성 메뉴 제거
+## 주요 반영 사항
+- 좌측 사이드바에서 `보고서 생성` 제거
+- `업무 흐름 기반 관리자 화면` 문구 제거
+- Step 카드의 `업무 진행 상태 표시` 제거
 - 4개 독립 업로드 카드
   - 재무상태표
   - 손익계산서
   - LNG매출 부피
   - LNG매출 열량
-- 업로드한 엑셀의 당월IS / 누적IS 시트를 읽어 대시보드 표와 KPI 반영
-- 기준 월 선택 및 상태 기반 UI 활성화
+- 기준 월 선택
+- 업로드한 엑셀의 `당월IS` / `누적IS` 시트를 읽어 대시보드 표와 KPI 반영
 
-## 실행 방법
+## 실행
 ```bash
 npm install
 npm run dev
 ```
 
-## 배포
-Vercel에서 루트 디렉터리를 그대로 사용해 배포합니다.
+## 빌드
+```bash
+npm run build
+npm start
+```
+
+## 배포 전 체크
+- `.env` 파일은 업로드하지 않음
+- `node_modules`, `.next`, `.vercel` 제외
+- Vercel Framework Preset: Next.js
+- Root Directory: 프로젝트 루트
